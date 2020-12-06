@@ -3,8 +3,6 @@ package org.polytec.vermeg.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +52,8 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
 	@SuppressWarnings("unchecked")
 	public List<T> executeQuerySelect(String sql) {
-		SQLQuery query = getCurrentSession().createSQLQuery(sql);
-		query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-		return query.list();
+		List<T> l = sessionFactory.getCurrentSession().createQuery(sql).list();
+		return l;
 	}
 
 }

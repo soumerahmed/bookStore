@@ -17,4 +17,6 @@ public interface ProductDAO {
 
 	Double getPriceByProductId(int id);
 
+	Double getPriceByProduct(Product product);
+
 }

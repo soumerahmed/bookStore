@@ -39,7 +39,7 @@ public class LineCommandServiceImpl implements LineCommandService {
 
 	@Override
 	public int getQuantityOfProductByLineCommandService(LineCommand lineCommand) {
-		return lineCommandDAO.findLineCommandById(lineCommand.getIdLineCommand()).getQt();
+		return lineCommandDAO.getQuantityOfProductByLineCommand(lineCommand);
 	}
 
 	@Override

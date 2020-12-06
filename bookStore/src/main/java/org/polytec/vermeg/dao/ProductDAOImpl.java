@@ -41,4 +41,9 @@ public class ProductDAOImpl extends AbstractHibernateDAO<Product> implements Pro
 		return findProductById(id).getPrice();
 	}
 
+	@Override
+	public Double getPriceByProduct(Product product) {
+		return findProductById(product.getIdProduct()).getPrice();
+	}
+
 }

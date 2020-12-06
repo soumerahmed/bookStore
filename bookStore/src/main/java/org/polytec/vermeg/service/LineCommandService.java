@@ -26,4 +26,5 @@ public interface LineCommandService {
 
 	@Transactional
 	List<LineCommand> getLineCommandByBillIdService(int id);
+
 }

@@ -23,6 +23,9 @@ public class Customer extends Person implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Bill> listBill;
 
+	public Customer() {
+	}
+
 	public Customer(int idCustomer, String last_name, String first_name, int cin, int tel, String role) {
 		super(idCustomer, last_name, first_name, cin, tel, role);
 	}

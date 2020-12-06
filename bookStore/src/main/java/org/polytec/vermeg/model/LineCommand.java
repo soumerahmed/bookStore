@@ -30,15 +30,27 @@ public class LineCommand implements Serializable {
 	@Column(name = "quantity")
 	private int quantity;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idProduct", nullable = false)
 	private Product product;
+
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idBill", nullable = false)
 	private Bill bill;
 
-	LineCommand() {
+	public LineCommand() {
+	}
+
+	public LineCommand(int id, int quantity) {
+		this.idLineCommand = id;
+		this.quantity = quantity;
+	}
+
+	public LineCommand(int id, int quantity, int idBill, int idProduct) {
+		this.idLineCommand = id;
+		this.quantity = quantity;
 	}
 
 	public LineCommand(int idLineCommand, int qt, Product product, Bill bill) {

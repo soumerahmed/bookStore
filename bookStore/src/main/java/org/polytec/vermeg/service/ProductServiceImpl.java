@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Double getPriceByProductService(Product product) {
-		return productDAO.findProductById(product.getIdProduct()).getPrice();
+		return productDAO.getPriceByProduct(product);
 	}
 
 }

@@ -43,6 +43,7 @@ public class Bill implements Serializable {
 
 	public Bill() {
 	}
+	
 
 	public int getIdBill() {
 		return idBill;

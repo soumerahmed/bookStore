@@ -45,7 +45,7 @@ public class LineCommandController {
 	@RequestMapping(value = "/updateLineCommand/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public String updateLineCommand(@PathVariable("id") int id, @RequestBody LineCommand lineCommand) {
 		if (lineCommandService.findLineCommandByIdService(id) == null) {
-			return " Product Not exist ";
+			return "  Not exist ";
 		} else {
 
 			lineCommandService.updateLineCommandService(lineCommandService.findLineCommandByIdService(id));

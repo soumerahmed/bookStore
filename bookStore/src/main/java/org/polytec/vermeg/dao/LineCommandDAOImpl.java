@@ -1,11 +1,20 @@
 package org.polytec.vermeg.dao;
 
 import java.util.List;
-import org.polytec.vermeg.model.LineCommand;
-import org.springframework.stereotype.Repository;
 
+import org.polytec.vermeg.model.LineCommand;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+@EnableTransactionManagement
 @Repository
 public class LineCommandDAOImpl extends AbstractHibernateDAO<LineCommand> implements LineCommandDAO {
+
+	@Autowired
+	BillDAO billd;
+	@Autowired
+	ProductDAO book;
 
 	public LineCommandDAOImpl() {
 		setClazz(LineCommand.class);
@@ -37,13 +46,20 @@ public class LineCommandDAOImpl extends AbstractHibernateDAO<LineCommand> implem
 	}
 
 	@Override
-	public int getQuantityOfProductByLineCommand(int id) {
-		return findLineCommandById(id).getQt();
+	public int getQuantityOfProductByLineCommand(LineCommand lineCommand) {
+		return findLineCommandById(lineCommand.getIdLineCommand()).getQt();
 	}
 
 	@Override
 	public List<LineCommand> findAllLineCommandByBillId(int id) {
-		return super.executeQuerySelect("SELECT * FROM linecommand WHERE idBill=" + id);
+
+		List<LineCommand> l = super.executeQuerySelect("from LineCommand");
+		for (LineCommand c : l) {
+			if (c.getBill().getIdBill() != id) {
+				l.remove(c);
+			}
+		}
+		return l;
 	}
 
 }

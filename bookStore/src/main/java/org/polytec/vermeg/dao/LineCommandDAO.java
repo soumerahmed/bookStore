@@ -15,7 +15,7 @@ public interface LineCommandDAO {
 
 	void updateLineCommand(LineCommand lineCommand);
 
-	int getQuantityOfProductByLineCommand(int id);
+	int getQuantityOfProductByLineCommand(LineCommand lineCommand);
 
 	List<LineCommand> findAllLineCommandByBillId(int id);
 

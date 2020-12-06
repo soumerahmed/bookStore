@@ -22,6 +22,9 @@ public class Book extends Product implements Serializable {
 	@Column(name = "dateEdition")
 	private Date dateEdition;
 
+	public Book() {
+	}
+
 	public Book(int idBook, String productDesignation, String productReference, int quatiteInStock, double price,
 			String title, String author, Date dateEdition) {
 		super(idBook, productDesignation, productReference, quatiteInStock, price);

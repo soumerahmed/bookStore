@@ -48,11 +48,11 @@ public class BillController {
 	@RequestMapping(value = "/updateBill/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
 	public String updateBill(@PathVariable("id") int id, @RequestBody Bill bill) {
 		if (billService.findBillByIdService(id) == null) {
-			return " Product Not exist ";
+			return " Bill Not exist ";
 		} else {
 
 			billService.updateBillService(billService.findBillByIdService(id));
-			return " Update product with succes";
+			return " Update Bill with succes";
 		}
 	}
 
